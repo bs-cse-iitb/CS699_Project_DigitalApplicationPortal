@@ -1,0 +1,53 @@
+<Html>  
+    <head>   
+    <title>  
+    Registration 
+    </title>  
+    </head>  
+    <body bgcolor="LightGray">  
+    <br>  
+    <br>  
+    <form action="addrecord/" method="post">
+    {% csrf_token %}  
+      
+    <label> Firstname </label>         
+    <input type="text" name="firstname" size="16"/> <br> <br>  
+    <label> Middlename: </label>     
+    <input type="text" name="middlename" size="16"/> <br> <br>  
+    <label> Lastname: </label>         
+    <input type="text" name="lastname" size="16"/> <br> <br>  
+      
+
+    <label>
+    Roll Number :
+    </label>
+    <input type="text" name="rollno" size="12" /> <br> <br>
+
+    <label>
+    Department :
+    </label>
+    <input type="text" name="dept" size="16"/> <br> <br>
+
+    <div>
+    <br><br>
+    <label>   
+    Phone :  
+    </label>    
+    <input type="text" name="phone" size="10"/> <br> <br>  
+    
+   Personal Email:  
+    <input type="email" id="personalemail" name="personalemail"/> <br>     
+    <br>
+   IITB Email:  
+    <input type="email" id="iitbemail" name="iitbemail"/> <br>    
+    <br> <br>  
+    
+    Password:  
+    <input type="Password" id="pass" name="pass"> <br>   
+    <br> <br>  
+    Re-type password:  
+    <input type="Password" id="repass" name="repass"> <br> <br>  
+    <input type="submit" value="Submit"/>  
+    </form>  
+    </body>  
+    </html>  

@@ -1,0 +1,18 @@
+<Html>  
+    <head>   
+    <title>  
+    Verify Email
+    </title>  
+    </head>  
+    <body bgcolor="LightGray">  
+    <br>  
+    <br>
+    <form action="verifytoken/" method="post">
+        {% csrf_token %}
+    OTP:  
+    <input type="OTP" id="OTP" name="OTP"> <br>   
+    <br> <br>
+    <input type="submit" value="Verify"/>  
+    </form>  
+    </body>  
+    </html>  

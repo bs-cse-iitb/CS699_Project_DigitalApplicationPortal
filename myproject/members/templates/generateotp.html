@@ -1,0 +1,19 @@
+<Html>  
+    <head>   
+    <title>  
+    Genrate OTP
+    </title>  
+    </head>  
+    <body bgcolor="LightGray"> 
+    <br>  
+    <br>  
+    <form action="verifyemail/" method="post">
+    {% csrf_token %}  
+
+   IITB Email:  
+    <input type="email" id="iitbemail" name="iitbemail"/> <br>    
+    <br> <br>  
+    <input type="submit" value="Genrate OTP"/>
+    </form>
+</body>  
+</html>  
