@@ -2,6 +2,8 @@ from django.http import HttpResponse
 from django.template import loader
 from .models import Members, Users
 import random
+from django.core.mail import send_mail
+from django.contrib import messages
 
 def index(request):
   mymembers = Members.objects.all().values()
@@ -26,6 +28,12 @@ def addrecord(request):
   pass1 = request.POST['pass']
   repass = request.POST['repass']
 
+
+  list1 =  str(iitbemail).split('@')
+  if list1[1] != "iitb.ac.in":
+    return HttpResponse('Incorrect IITB Email, please try Again !!!')
+
+
   #checking if pass1 and repass is equal
   if(pass1 != repass):
     return HttpResponse('Password not matching, please try Again !!!')
@@ -41,33 +49,26 @@ def addrecord(request):
                    password =  pass1,
                    verified = 0)
   member.save()
+  
+  #Send Email for OTP Verification.
+  global OTPNUM
+  OTPNUM = random.randrange(10000,99999)
+  send_mail('Your OTP for Verification', 'Your OTP is {}'.format(OTPNUM),'aniketjadhav.aj.4282536@gmail.com',[personalemail],fail_silently=False)
+
   template = loader.get_template('regsucc.html')
   return HttpResponse(template.render())
   #return HttpResponse('Registration Successfull !!')
   #return HttpResponseRedirect(reverse('index'))
 
-def generateotp(request):
-  template = loader.get_template('generateotp.html')
-  return HttpResponse(template.render({}, request))
-
 def verifyemail(request):
-  global valnum
-  iitbemail = request.POST['iitbemail']
-  mymember = Users.objects.get(iitbemail = iitbemail)
-  valnum = random.randrange(10000,99999)
-
-  if(mymember == None):
-    return HttpResponse('Email Does not exist!! Please Enter correct Email')
+  global OTPNUM
+  OTP = request.POST['OTP']
   
-  template = loader.get_template('verifyemail.html')
-  return HttpResponse(template.render())
+  if OTP == OTPNUM:
+    messages.success(request,'Email Verified')
 
-
-
-def verifytoken(request):
-  otp = request.POST['OTP']
-  global valnum
-  if(int(otp) == int(valnum)):
-    None
-
-  return None
+  """if(mymember == None):
+    return HttpResponse('Email Does not exist!! Please Enter correct Email')"""
+  
+  #template = loader.get_template('verifyemail.html')
+  #return HttpResponse(template.render())
