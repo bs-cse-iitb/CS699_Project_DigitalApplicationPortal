@@ -6,6 +6,7 @@ urlpatterns = [
     path('registration/', views.registration, name='registration'),
     path('registration/addrecord/', views.addrecord, name='addrecord'),
     #path('generateotp/', views.generateotp, name='generateotp'),
-    path('verifyemail/', views.verifyemail, name='verifyemail'),
+    path('verifyemailreq/', views.verifyemailreq, name='verifyemail'),
+    path('verifyemailreq/verifyemail/', views.verifyemail, name='verifyemail')
 
 ]

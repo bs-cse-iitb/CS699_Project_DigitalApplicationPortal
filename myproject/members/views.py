@@ -1,9 +1,13 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from .models import Members, Users
 import random
 from django.core.mail import send_mail
 from django.contrib import messages
+
+#global OTPNUM
+#OTPNUM = 0
+
 
 def index(request):
   mymembers = Members.objects.all().values()
@@ -48,24 +52,38 @@ def addrecord(request):
                    iitbemail =  iitbemail,
                    password =  pass1,
                    verified = 0)
-  member.save()
+  
   
   #Send Email for OTP Verification.
-  global OTPNUM
   OTPNUM = random.randrange(10000,99999)
   send_mail('Your OTP for Verification', 'Your OTP is {}'.format(OTPNUM),'aniketjadhav.aj.4282536@gmail.com',[personalemail],fail_silently=False)
+  request.session['otpnum'] = OTPNUM
+  print(OTPNUM)
+  member.save() #Save Data to DB
 
-  template = loader.get_template('regsucc.html')
-  return HttpResponse(template.render())
+  messages.info(request, 'Your account has been registered successfully!')
+  return HttpResponseRedirect('/members/verifyemailreq/')
+  #template = loader.get_template('regsucc.html')
+  #return HttpResponse(template.render())
   #return HttpResponse('Registration Successfull !!')
   #return HttpResponseRedirect(reverse('index'))
 
+
+def verifyemailreq(request):
+  template = loader.get_template('verifyemail.html')
+  return HttpResponse(template.render({}, request))
+
 def verifyemail(request):
-  global OTPNUM
+  OTPNUM = request.session.get('otpnum')
   OTP = request.POST['OTP']
-  
-  if OTP == OTPNUM:
-    messages.success(request,'Email Verified')
+  print(OTPNUM,OTP)
+  if int(OTP) == int(OTPNUM):
+    Member = Users(verified = 1)
+    Member.save()
+    return HttpResponse('Account Verified!!!')
+  else:
+    messages.error(request, 'OTP Invalid Retry !!!')
+    return HttpResponseRedirect('/members/verifyemailreq/')
 
   """if(mymember == None):
     return HttpResponse('Email Does not exist!! Please Enter correct Email')"""
