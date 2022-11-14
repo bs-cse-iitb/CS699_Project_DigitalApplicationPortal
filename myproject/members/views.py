@@ -56,9 +56,9 @@ def addrecord(request):
   
   #Send Email for OTP Verification.
   OTPNUM = random.randrange(10000,99999)
-  send_mail('Your OTP for Verification', 'Your OTP is {}'.format(OTPNUM),'aniketjadhav.aj.4282536@gmail.com',[personalemail],fail_silently=False)
+  send_mail('Your OTP for Verification', 'Your OTP is {}'.format(OTPNUM),'aniketjadhav.aj.4282536@gmail.com',[iitbemail],fail_silently=False)
   request.session['otpnum'] = OTPNUM
-  print(OTPNUM)
+  #print(OTPNUM)
   member.save() #Save Data to DB
 
   messages.info(request, 'Your account has been registered successfully!')
@@ -76,7 +76,7 @@ def verifyemailreq(request):
 def verifyemail(request):
   OTPNUM = request.session.get('otpnum')
   OTP = request.POST['OTP']
-  print(OTPNUM,OTP)
+  #print(OTPNUM,OTP)
   if int(OTP) == int(OTPNUM):
     Member = Users(verified = 1)
     Member.save()
@@ -90,3 +90,27 @@ def verifyemail(request):
   
   #template = loader.get_template('verifyemail.html')
   #return HttpResponse(template.render())
+
+def login(request):
+  template = loader.get_template('login.html')
+  return HttpResponse(template.render({}, request))
+
+
+def loginverify(request):
+  email = request.POST['iitbemail']
+  password = request.POST['password']
+  #print("hello null", mymember)
+  if Users.objects.filter(iitbemail=email).count() != 1:
+    messages.error(request,"Wrong Username password Combination")
+    template = loader.get_template('login.html')
+    return HttpResponse(template.render({}, request))
+  else:
+    mymember = Users.objects.get(iitbemail=email)
+    if mymember.password == password:
+      messages.success(request, "Login Successfull !!")
+      request.session['login'] = 1
+      return HttpResponse("Login Successfull !!")
+    else:  
+      messages.error(request, "Wrong Username password Combination")
+      template = loader.get_template('login.html')
+      return HttpResponseRedirect(template.render({}, request))
