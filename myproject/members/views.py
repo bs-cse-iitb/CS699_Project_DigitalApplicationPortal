@@ -91,7 +91,7 @@ def generateotp(request):
     if forgotpass:
       request.session['email'] = iitbemail
     OTPNUM = random.randrange(10000,99999)
-    send_mail('Your OTP for Verification', 'Your OTP is {}'.format(OTPNUM),'aniketjadhav.aj.4282536@gmail.com',['aniket1jadhav.3@gmail.com'],fail_silently=False)
+    send_mail('Your OTP for Verification', 'Your OTP is {}'.format(OTPNUM),'aniketjadhav.aj.4282536@gmail.com',[iitbemail],fail_silently=False)
     request.session['otpnum'] = OTPNUM
     messages.success(request,"OTP Sent Successfully")
     template = loader.get_template('verifyemail.html')

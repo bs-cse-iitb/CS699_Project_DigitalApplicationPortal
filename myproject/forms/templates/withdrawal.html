@@ -1,0 +1,94 @@
+<Html>
+
+<head>
+    <title>
+        Registration
+    </title>
+</head>
+
+<body bgcolor="LightGray">
+    <br>
+    <br>
+    <form action="/forms/withdrawal/" method="post">
+        {% csrf_token %}
+
+        <label> Firstname </label>
+        <input type="text" name="firstname" size="16" /> <br> <br>
+        <label> Middlename: </label>
+        <input type="text" name="middlename" size="16" /> <br> <br>
+        <label> Lastname: </label>
+        <input type="text" name="lastname" size="16" /> <br> <br>
+
+
+        <label>
+            Roll Number :
+        </label>
+        <input type="text" name="rollno" size="12" required /> <br> <br>
+
+        <label>
+            Department :
+        </label>
+        <input type="text" name="dept" size="16" /> <br> <br>
+
+        <label>
+            Current Year :
+        </label>
+        <input type="text" name="curyear" size="16" /> <br> <br>
+
+        <br><br>
+        <label for="Forms">Degree:</label>
+        <select name="Degree" id="degree" name="degree">
+            <option value="B.Tech">B.Tech</option>
+            <option value="B.S">B.S</option>
+            <option value="B.Des">B.Des</option>
+            <option value="Dual Degree">Dual Degree</option>
+            <option value="5 Yr. Integrated M.Sc.">5 Yr. Integrated M.Sc.</option>
+            <option value="2 Yr. M.Sc.">2 Yr. M.Sc.</option>
+            <option value="M.Phil">M.Phil</option>
+            <option value="M.Tech">M.Tech</option>
+            <option value="M.Des">M.Des</option>
+            <option value="M.Mgt">M.Mgt</option>
+            <option value="M.Sc + Ph.D">M.Sc + Ph.D</option>
+            <option value="M.Phil + Ph.D">M.Phil + Ph.D</option>
+            <option value="M.Tech + Ph.D">M.Tech + Ph.D</option>
+            <option value="MS by Research">MS by Research</option>
+            <option value="Ph.D programme">Ph.D programme</option>
+        </select> <br> <br>
+
+        <label> Date of Joining </label>
+        <input type="date" name="doj" size="16" /> <br> <br>
+
+        <label> Previous Degree </label>
+        <input type="text" name="prevdeg" size="16" /> <br> <br>
+
+        <label> Category </label>
+        <input type="text" name="category" size="16" /> <br> <br>
+
+        <label> Faculty Advisor 1 </label>
+        <input type="text" name="facads1" size="16" /> <br> <br>
+
+        <label> Faculty Advisor 2 </label>
+        <input type="text" name="facads2" size="16" /> <br> <br>
+
+        <label> CPI </label>
+        <input type="text" name="cpi" size="16" /> <br> <br>
+
+        <label> Reason </label>
+        <input type="text" name="reason" size="16" /> <br> <br>
+
+        <label>
+            Purpose :
+        </label>
+        <input type="text" name="purpose" size="20" /> <br> <br>
+        <input type="submit" value="Submit" />
+    </form>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</body>
+
+</html>
