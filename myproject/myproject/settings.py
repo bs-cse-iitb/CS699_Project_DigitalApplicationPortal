@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'members.apps.MembersConfig'
+    'members.apps.MembersConfig',
+    'forms.apps.FormsConfig'
 ]
 
 MIDDLEWARE = [
@@ -126,3 +127,16 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+#Email Configurations
+#ZDYJ22MBTW5XLHKHWUQIKSB4C2NC64PQAFZQYLIAHEV7MOS7KLBKDCO4NQMTBDUZ
+EMAIL_BACKEND = 'django_mailjet.backends.MailjetBackend'
+EMAIL_HOST = 'in-v3.mailjet.com'
+MAILJET_API_KEY = "cb8650a45b1f1da8f9204cec12506088"
+MAILJET_API_SECRET = "eb8dddc62aa7f4ce910b54a54a632f10"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+EMAIL_TIMEOUT = 30
+DEFAULT_FROM_EMAIL = 'Aniket aniketjadhav.aj.4282536@gmail.com'
