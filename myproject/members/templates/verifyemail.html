@@ -1,0 +1,28 @@
+<Html>
+
+<head>
+    <title>
+        Verify Email
+    </title>
+</head>
+
+<body bgcolor="LightGray">
+    <br>
+    <br>
+    <form action="/members/verifyemail/" method="post">
+        {% csrf_token %}
+        OTP:
+        <input type="OTP" id="OTP" name="OTP"> <br>
+        <br> <br>
+        <input type="submit" value="Verify" />
+    </form>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</body>
+
+</html>
