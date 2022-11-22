@@ -1,6 +1,0 @@
-sudo apt update
-sudo apt install python3-pip python3-dev libpq-dev postgresql postgresql-contrib
-sudo pip3 install virtualenv
-#activate virtualenv first
-pip install Django psycopg2
-pip install django-mailjet
