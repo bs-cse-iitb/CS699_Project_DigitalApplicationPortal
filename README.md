@@ -1,4 +1,5 @@
 # CS699_Project
+## Running Instructions
 step 1. Install Required Packages
 1.sudo apt update
 2.sudo apt install python3-pip python3-dev libpq-dev postgresql postgresql-contrib
