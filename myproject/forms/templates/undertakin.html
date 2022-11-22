@@ -1,60 +1,74 @@
-<Html>  
-    <head>   
-    <title>  
-    Registration 
-    </title>  
-    </head>  
-    <body bgcolor="LightGray">  
-    <br>  
-    <br>  
-    <form action="addrecord/" method="post">
-    {% csrf_token %}  
-      
-    <label> Firstname </label>         
-    <input type="text" name="firstname" size="16"/> <br> <br>  
-    <label> Middlename: </label>     
-    <input type="text" name="middlename" size="16"/> <br> <br>  
-    <label> Lastname: </label>         
-    <input type="text" name="lastname" size="16"/> <br> <br>  
-      
+<Html>
 
-    <label>
-    Roll Number :
-    </label>
-    <input type="text" name="rollno" size="12" required/> <br> <br>
-
-    <label>
-    Department :
-    </label>
-    <input type="text" name="dept" size="16"/> <br> <br>
-
-    <div>
-    <br><br>
-    <label>   
-    Phone :  
-    </label>    
-    <input type="text" name="phone" size="10"/> <br> <br>  
+    <head>
+        <title>
+            Registration
+        </title>
+    </head>
     
-   Personal Email:  
-    <input type="email" id="personalemail" name="personalemail"/> <br>     
-    <br>
-   IITB Email:  
-    <input type="email" id="iitbemail" name="iitbemail" required/> <br>    
-    <br> <br>  
+    <body bgcolor="LightGray">
+        <br>
+        <br>
+        <form action="/forms/withdrawal/" method="post">
+            {% csrf_token %}
     
-    Password:  
-    <input type="Password" id="pass" name="pass" required> <br>   
-    <br> <br>  
-    Re-type password:  
-    <input type="Password" id="repass" name="repass" required> <br> <br>  
-    <input type="submit" value="Submit"/>  
-    </form>  
-    {% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-        <li {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
-        {% endfor %}
-    </ul>
-    {% endif %}
-    </body>  
-    </html>  
+            <label> Firstname </label>
+            <input type="text" name="firstname" size="16" /> <br> <br>
+            <label> Middlename: </label>
+            <input type="text" name="middlename" size="16" /> <br> <br>
+            <label> Lastname: </label>
+            <input type="text" name="lastname" size="16" /> <br> <br>
+    
+    
+            <label>
+                Roll Number :
+            </label>
+            <input type="text" name="rollno" size="12" required /> <br> <br>
+    
+            <label>
+                Department :
+            </label>
+            <input type="text" name="dept" size="16" /> <br> <br>
+    
+            <br><br>
+            <label for="Forms">Degree:</label>
+            <select name="Degree" id="degree" name="degree">
+                <option value="B.Tech">B.Tech</option>
+                <option value="B.S">B.S</option>
+                <option value="B.Des">B.Des</option>
+                <option value="Dual Degree">Dual Degree</option>
+                <option value="5 Yr. Integrated M.Sc.">5 Yr. Integrated M.Sc.</option>
+                <option value="2 Yr. M.Sc.">2 Yr. M.Sc.</option>
+                <option value="M.Phil">M.Phil</option>
+                <option value="M.Tech">M.Tech</option>
+                <option value="M.Des">M.Des</option>
+                <option value="M.Mgt">M.Mgt</option>
+                <option value="M.Sc + Ph.D">M.Sc + Ph.D</option>
+                <option value="M.Phil + Ph.D">M.Phil + Ph.D</option>
+                <option value="M.Tech + Ph.D">M.Tech + Ph.D</option>
+                <option value="MS by Research">MS by Research</option>
+                <option value="Ph.D programme">Ph.D programme</option>
+            </select> <br> <br>
+    
+            <label> GATE Year </label>
+            <input type="text" name="gyear" size="16" /> <br> <br>
+    
+            <label> Email </label>
+            <input type="email" name="email" size="16" /> <br> <br>
+    
+            <label>
+                contact No. :
+            </label>
+            <input type="text" name="contact" size="16" /> <br> <br>
+            <input type="submit" value="Submit" />
+        </form>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </body>
+    
+    </html>
