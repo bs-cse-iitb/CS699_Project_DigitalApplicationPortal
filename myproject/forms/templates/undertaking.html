@@ -9,7 +9,7 @@
     <body bgcolor="LightGray">
         <br>
         <br>
-        <form action="/forms/withdrawal/" method="post">
+        <form action="/forms/undertaking/" method="post">
             {% csrf_token %}
     
             <label> Firstname </label>
@@ -32,7 +32,7 @@
     
             <br><br>
             <label for="Forms">Degree:</label>
-            <select name="Degree" id="degree" name="degree">
+            <select id="degree" name="degree">
                 <option value="B.Tech">B.Tech</option>
                 <option value="B.S">B.S</option>
                 <option value="B.Des">B.Des</option>
@@ -50,7 +50,14 @@
                 <option value="Ph.D programme">Ph.D programme</option>
             </select> <br> <br>
     
-            <label> GATE Year </label>
+            <br><br>
+            <label for="Forms">Exam:</label>
+            <select name="exam" id="exam">
+                <option value="GATE">GATE</option>
+                <option value="CEED">CEED</option>
+            </select> <br> <br>
+
+            <label> Year </label>
             <input type="text" name="gyear" size="16" /> <br> <br>
     
             <label> Email </label>

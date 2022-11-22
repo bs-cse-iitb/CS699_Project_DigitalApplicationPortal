@@ -7,5 +7,7 @@ urlpatterns = [
     path('fillform/', views.fillform, name='fillform'),
     path('bonafide/', views.bonafide, name='bonafide'),
     path('withdrawal/', views.withdrawal, name='withdrawal'),
+    path('undertaking/', views.undertaking, name='undertaking'),
+    path('reexam/', views.reexam, name='reexam'),
 
     ]

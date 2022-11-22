@@ -145,6 +145,7 @@ def undertaking(request):
     rollno = request.POST['rollno']
     dept = request.POST['dept']
     degree = request.POST['degree']
+    exam = request.POST['exam']
     gyear = request.POST['gyear']
     email = request.POST['email']
     contact = request.POST['contact']
@@ -153,12 +154,13 @@ def undertaking(request):
     filedata = text_file.read()
     text_file.close()
 
-    filedata = filedata.replace("studentfullname" , firstname +" "+ middlename +" "+ lastname)
-    filedata = filedata.replace("studentrollno", rollno)
-    filedata = filedata.replace("currentyear", curyear)
-    filedata = filedata.replace(degree, "\\textbf{" +degree+"}",1)
-    filedata = filedata.replace("studentdepartment", dept)
-    filedata = filedata.replace("studentpurpose", purpose)
+    filedata = filedata.replace("studentName" , firstname +" "+ middlename +" "+ lastname)
+    filedata = filedata.replace("studentRollno", rollno)
+    filedata = filedata.replace("studentExam", exam+" "+gyear)
+    filedata = filedata.replace("studentPrpgramme", degree)
+    filedata = filedata.replace("studentDepartment", dept)
+    filedata = filedata.replace("studentRollNo @iitb.ac.in", email)
+    filedata = filedata.replace("studentContact", contact)
 
   
     text_file = open("latexfiles/newundertaking.tex", "w")
