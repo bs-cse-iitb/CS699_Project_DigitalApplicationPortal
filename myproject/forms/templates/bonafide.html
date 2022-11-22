@@ -1,15 +1,108 @@
-<Html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Registration</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+ 
+  <nav id="nav" class="navbar-navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNav">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
 
+        <div class="collapse-navbar-collapse" id="myNav">
+          <ul class="nav navbar-nav">
+            <li><a href="/members/">Home</a></li>
+            <li><a href="/forms/formsselect/">Application Form</a></li>
+            <li><a href="/members/registration/">Register</a></li>
+            <li><a href="/members/login/">LogIn</a></li>
+          </ul>
+        </div>
+    </div>
+  </nav>
+  </ul>
+  </div>
+</head>
+
+<style>
+    .container h1 {
+padding: 35px 35px 0 35px;
+text-align: center;
+font-weight: 600;
+}
+
+.navbar-navbar-inverse {
+  background-color: black;
+  font-size: 20px;
+  font-family: Serif;
+}
+
+body {
+      background-color: grey;
+    }
+    .container {
+    border-radius: 20px;
+    background-color: #a4bae9;
+    padding: 20px;
+    width: 45%;
+    margin: auto;
+    padding: 40px;
+    border-radius: 15px;
+    opacity: 0.8;
+    }
+    input[type=text], select, textarea{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid rgb(7, 3, 3);
+    border-radius: 6px;
+    }
+
+    input[type=email], select, textarea{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid rgb(7, 3, 3);
+    border-radius: 6px;
+    }
+
+    input[type=password], select, textarea{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid rgb(7, 3, 3);
+    border-radius: 6px;
+    }
+
+    label {
+    padding: 10px 10px 10px 0;
+    }
+
+    input[type=submit] {
+    background-color: blue;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 6px;
+    cursor: pointer;
+    float: right;
+    }
+
+
+</style>
 <head>
     <title>
-        Registration
+        Bonafide
     </title>
 </head>
 
-<body bgcolor="LightGray">
-    <br>
-    <br>
-    <form action="/forms/bonafide/" method="post">
+
+<div class="container">
+<h1>Bonafide</h1>    <form action="/forms/bonafide/" method="post">
         {% csrf_token %}
 
         <label> Firstname </label>
@@ -37,7 +130,6 @@
 
         <div>
             <br><br>
-            <label>
                 <label for="Forms">Degree:</label>
                 <select name="degree" id="degree" name="degree">
                     <option value="B.Tech">B.Tech</option>
@@ -71,6 +163,7 @@
         {% endfor %}
     </ul>
     {% endif %}
+</div>
 </body>
 
 </html>

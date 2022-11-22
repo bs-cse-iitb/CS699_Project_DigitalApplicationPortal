@@ -10,11 +10,8 @@ from django.contrib import messages
 
 
 def index(request):
-  mymembers = Members.objects.all().values()
-  output = ""
-  for x in mymembers:
-    output += x["firstname"]
-  return HttpResponse(output)
+  template = loader.get_template('home.html')
+  return HttpResponse(template.render({}, request))
 
 def registration(request):
   template = loader.get_template('reg.html')
@@ -143,7 +140,7 @@ def loginverify(request):
     if mymember.password == password:
       messages.success(request, "Login Successfull !!")
       request.session['login'] = 1
-      return HttpResponse("Login Successfull !!")
+      return HttpResponseRedirect('/forms/formsselect/')
     else:  
       messages.error(request, "Wrong Username & password Combination")
       return HttpResponseRedirect('/members/login/')
