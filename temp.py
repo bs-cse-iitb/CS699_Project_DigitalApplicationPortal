@@ -1,10 +1,12 @@
 
-    if os.path.isfile("newundertaking.aux"):
-        os.remove("newundertaking.aux")
-    if os.path.isfile("newundertaking.log"):
-        os.remove("newundertaking.log")
-    if os.path.isfile("newundertaking.pdf"):
-        os.remove("newundertaking.pdf")
+def reexam(request):
+
+    if os.path.isfile("newreexam.aux"):
+        os.remove("newreexam.aux")
+    if os.path.isfile("newreexam.log"):
+        os.remove("newreexam.log")
+    if os.path.isfile("newreexam.pdf"):
+        os.remove("newreexam.pdf")
 
     firstname = request.POST['firstname']
     middlename = request.POST['middlename']
@@ -12,16 +14,11 @@
     rollno = request.POST['rollno']
     dept = request.POST['dept']
     degree = request.POST['degree']
-    doj = request.POST['doj']
-    prevdeg = request.POST['prevdeg']
-    category = request.POST['category']
-    facads1 = request.POST['facads1']
-    facads2 = request.POST['facads2']
-    cpi = request.POST['cpi']
-    reason = request.POST['reason']
-    purpose = request.POST['purpose']
+    gyear = request.POST['gyear']
+    email = request.POST['email']
+    contact = request.POST['contact']
   
-    text_file = open("latexfiles/undertaking.txt", "r")
+    text_file = open("latexfiles/reexam.txt", "r")
     filedata = text_file.read()
     text_file.close()
 
@@ -33,15 +30,15 @@
     filedata = filedata.replace("studentpurpose", purpose)
 
   
-    text_file = open("latexfiles/newundertaking.tex", "w")
+    text_file = open("latexfiles/newreexam.tex", "w")
     text_file.write(filedata)
     text_file.close()
   
 
-    tex_filename = 'latexfiles/newundertaking.tex'
+    tex_filename = 'latexfiles/newreexam.tex'
     #tex_filename =  os.path.abspath(tex_filename)
     filename, ext = os.path.splitext(tex_filename)
     pdf_filename = filename + '.pdf'
     subprocess.run(['pdflatex', '-interaction=nonstopmode', tex_filename])
   
-    return FileResponse(open("newundertaking.pdf", 'rb'), content_type='application/pdf')
+    return FileResponse(open("newreexam.pdf", 'rb'), content_type='application/pdf')

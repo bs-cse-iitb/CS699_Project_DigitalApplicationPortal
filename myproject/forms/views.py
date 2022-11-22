@@ -168,3 +168,73 @@ def undertaking(request):
     subprocess.run(['pdflatex', '-interaction=nonstopmode', tex_filename])
   
     return FileResponse(open("newundertaking.pdf", 'rb'), content_type='application/pdf')
+
+
+def reexam(request):
+
+    if os.path.isfile("newreexam.aux"):
+        os.remove("newreexam.aux")
+    if os.path.isfile("newreexam.log"):
+        os.remove("newreexam.log")
+    if os.path.isfile("newreexam.pdf"):
+        os.remove("newreexam.pdf")
+
+    firstname = request.POST['firstname']
+    middlename = request.POST['middlename']
+    lastname = request.POST['lastname']
+    rollno = request.POST['rollno']
+    dept = request.POST['dept']
+    degree = request.POST['degree']
+    category = request.POST['category']
+    hostelroom = request.POST['hostelroom']
+    email = request.POST['email']
+    receipt = request.POST['receipt']
+    
+    cnum1 = request.POST['cnum1']
+    cname1 = request.POST['cname1']
+    cslot1 = request.POST['cslot1']
+    cgrade1 = request.POST['cgrade1']
+    cinstr1 = request.POST['cinstr1']
+
+    cnum2 = request.POST['cnum2']
+    cname2 = request.POST['cname2']
+    cslot2 = request.POST['cslot2']
+    cgrade2 = request.POST['cgrade2']
+    cinstr2 = request.POST['cinstr2']
+
+    cnum3 = request.POST['cnum3']
+    cname3 = request.POST['cname3']
+    cslot3 = request.POST['cslot3']
+    cgrade3 = request.POST['cgrade3']
+    cinstr3 = request.POST['cinstr3']
+
+    cnum4 = request.POST['cnum4']
+    cname4 = request.POST['cname4']
+    cslot4 = request.POST['cslot4']
+    cgrade4 = request.POST['cgrade4']
+    cinstr4 = request.POST['cinstr4']
+  
+    text_file = open("latexfiles/reexam.txt", "r")
+    filedata = text_file.read()
+    text_file.close()
+
+    filedata = filedata.replace("studentfullname" , firstname +" "+ middlename +" "+ lastname)
+    filedata = filedata.replace("studentrollno", rollno)
+    filedata = filedata.replace("currentyear", curyear)
+    filedata = filedata.replace(degree, "\\textbf{" +degree+"}",1)
+    filedata = filedata.replace("studentdepartment", dept)
+    filedata = filedata.replace("studentpurpose", purpose)
+
+  
+    text_file = open("latexfiles/newreexam.tex", "w")
+    text_file.write(filedata)
+    text_file.close()
+  
+
+    tex_filename = 'latexfiles/newreexam.tex'
+    #tex_filename =  os.path.abspath(tex_filename)
+    filename, ext = os.path.splitext(tex_filename)
+    pdf_filename = filename + '.pdf'
+    subprocess.run(['pdflatex', '-interaction=nonstopmode', tex_filename])
+  
+    return FileResponse(open("newreexam.pdf", 'rb'), content_type='application/pdf')
