@@ -1,0 +1,104 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs}
+\usepackage{multicol}
+\usepackage{arydshln}
+\usepackage[a4paper, left=2cm,right=1.5cm,top=1cm,bottom=1cm]{geometry}
+\usepackage{graphicx}
+
+
+\title{\textbf{Withdrawlform}}
+\author{Balbir Singh (R.N.- 22M0747)}
+\date{\today}
+
+\begin{document}
+\begin{minipage}{0.15\linewidth}
+\includegraphics[width=0.8in]{logo.png}
+\end{minipage}
+\begin{minipage}{0.85\linewidth}
+\Large\textbf{INDIAN INSTITUTE OF TECHNOLOGY BOMBAY\\DEPARTMENT OF \underline{\textbf{studentDepartment}}}
+\end{minipage}
+ 
+\hline
+\vspace{0.2cm}
+\large\textbf{ Application for Withdrawal/Resignation from the programme (Master/Ph.D.)} 
+\begin{flushright}
+\textbf{Date: \today}
+\end{flushright}
+
+\begingroup
+%\setlength{\tabcolsep}{10pt} % Default value: 6pt
+\renewcommand{\arraystretch}{2} % Default value: 1
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{l|l}
+    \hline
+NAME: \underline{\Large{\textbf{studentName}}}& ROLL NO: \underline{\Large{\textbf{studentRollno}}}\\  
+\hline
+PROGRAMME: \underline{\Large{\textbf{studentProgramme}}} & DATE OF JOINING: \underline{\textbf{studentJoiningDate}}\\
+\hline
+PREVIOUS QUALIFICATION \underline{\textbf{studentQualification}}: & CATEGORY :\underline{\textbf{studentCategory}}\\
+\hline
+NAME OF FACULTY ADVISOR(S) / GUIDE(S): & FOR PH.D./DUAL DEGREE STUDENTS ONLY :
+\\PROF.\underline{\textbf{studentAdvisor1}} & DATE OF CONFIRMATION :%\underline\{\textbf{studentConfirmation}}
+\\PROF.\underline{\textbf{studentAdvisor2}} & DATE OF LAST APS : %\underline{\textbf{studentLastAps}}
+\\
+\hline
+    \end{tabular}
+    \label{tab:my_labe}
+\end{table}
+\endgroup
+
+
+COURSE CREDITS COMPLETED/CPI : \underline{\Large{\textbf{studentCPI}}}\\
+\hline
+\vspace{0.2cm}
+REASON /JUSTIFICATION:
+\underline{\textbf{studentReason}}
+\\
+ENCLOSURES (if any) : --------------------------
+
+
+\vspace{1cm}
+\begin{flushright}
+Student's (Signature with Date) \\
+\end{flushright}
+RECOMMENDATION OF FACULTY ADVISOR(S) / GUIDE(S) :
+%\underline{\textbf{studentRecommendationAdvisor}}
+\vspace{1cm}
+\begingroup
+\setlength{\tabcolsep}{50pt}
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{c  c}
+          Faculty Advisor/Supervisor & Faculty Advisor/Supervisor\\ (Signature with Date) & (Signature with Date)
+    \end{tabular}
+    \label{tab:my_label}
+\end{table}
+\endgroup\\
+RECOMMENDATION OF DPGC/IDPC/PGC :
+%\underline{\Large{\textbf{studentRecomendationDPGC}}}
+\begin{flushright}
+------------------------------------------\\
+Convener, DPGC/IDPC/PGC\\
+Signature(with Date & Stamp)    
+\end{flushright}
+\small\textbf{=================== FOR ACADEMIC OFFICE USE ONLY ================}\\
+REMARKS, IF ANY :
+\vspace{1cm}
+\begin{flushright}
+Signature of OS/AR\\
+Date : \textbf{\today}    
+\end{flushright}
+
+\hline
+\vspace{0.5cm}
+\begin{flushright}
+    ----------------------------------
+    \\Dean, AP/Convener, PGAPEC
+\end{flushright}
+\hline
+\vspace{0.1cm}
+\small\textbf{ACADEMIC OFFICE CONTACT NOS. : PG : 7044, 7046, 7059, 7066, 7924 : 4014/15/16, 7045, 7058}
+
+\end{document}

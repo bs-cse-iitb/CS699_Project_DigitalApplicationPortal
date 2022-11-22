@@ -97,18 +97,23 @@ def withdrawal(request):
     facads2 = request.POST['facads2']
     cpi = request.POST['cpi']
     reason = request.POST['reason']
-    purpose = request.POST['purpose']
   
     text_file = open("latexfiles/withdraw.txt", "r")
     filedata = text_file.read()
     text_file.close()
 
-    filedata = filedata.replace("studentfullname" , firstname +" "+ middlename +" "+ lastname)
-    filedata = filedata.replace("studentrollno", rollno)
-    filedata = filedata.replace("currentyear", curyear)
-    filedata = filedata.replace(degree, "\\textbf{" +degree+"}",1)
-    filedata = filedata.replace("studentdepartment", dept)
-    filedata = filedata.replace("studentpurpose", purpose)
+    filedata = filedata.replace("studentName" , firstname +" "+ middlename +" "+ lastname)
+    filedata = filedata.replace("studentRollno", rollno)
+    #filedata = filedata.replace("currentyear", curyear)
+    filedata = filedata.replace("studentProgramme", "\\textbf{" +degree+"}",1)
+    filedata = filedata.replace("studentDepartment", dept)
+    filedata = filedata.replace("studentJoiningDate", doj)
+    filedata = filedata.replace("studentQualification", prevdeg)
+    filedata = filedata.replace("studentCategory", category)
+    filedata = filedata.replace("studentAdvisor1", facads1)
+    filedata = filedata.replace("studentAdvisor2", facads2)
+    filedata = filedata.replace("studentCPI", cpi)
+    filedata = filedata.replace("studentReason", reason)
 
   
     text_file = open("latexfiles/newwithdraw.tex", "w")
