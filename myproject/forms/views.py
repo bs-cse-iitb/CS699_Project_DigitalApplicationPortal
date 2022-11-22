@@ -191,7 +191,7 @@ def reexam(request):
     lastname = request.POST['lastname']
     rollno = request.POST['rollno']
     dept = request.POST['dept']
-    degree = request.POST['degree']
+    #degree = request.POST['degree']
     category = request.POST['category']
     hostelroom = request.POST['hostelroom']
     email = request.POST['email']
@@ -225,12 +225,37 @@ def reexam(request):
     filedata = text_file.read()
     text_file.close()
 
-    filedata = filedata.replace("studentfullname" , firstname +" "+ middlename +" "+ lastname)
-    filedata = filedata.replace("studentrollno", rollno)
-    filedata = filedata.replace("currentyear", curyear)
-    filedata = filedata.replace(degree, "\\textbf{" +degree+"}",1)
-    filedata = filedata.replace("studentdepartment", dept)
-    filedata = filedata.replace("studentpurpose", purpose)
+    filedata = filedata.replace("studentName" , firstname +" "+ middlename +" "+ lastname)
+    filedata = filedata.replace("studentRollno", rollno)
+    filedata = filedata.replace("studentCategory", category)
+    filedata = filedata.replace("studentDepartment", dept)
+    filedata = filedata.replace("studentHostelRoom", hostelroom)
+    filedata = filedata.replace("studentRollno@iitb.ac.in", email)
+    filedata = filedata.replace("receiptnum", receipt)
+
+    filedata = filedata.replace("cnum1", cnum1)
+    filedata = filedata.replace("cname1", cname1)
+    filedata = filedata.replace("cslot1", cslot1)
+    filedata = filedata.replace("cgrade1", cgrade1)
+    filedata = filedata.replace("cinstr1", cinstr1)
+
+    filedata = filedata.replace("cnum2", cnum2)
+    filedata = filedata.replace("cname2", cname2)
+    filedata = filedata.replace("cslot2", cslot2)
+    filedata = filedata.replace("cgrade2", cgrade2)
+    filedata = filedata.replace("cinstr2", cinstr2)
+
+    filedata = filedata.replace("cnum3", cnum3)
+    filedata = filedata.replace("cname3", cname3)
+    filedata = filedata.replace("cslot3", cslot3)
+    filedata = filedata.replace("cgrade3", cgrade3)
+    filedata = filedata.replace("cinstr3", cinstr3)
+
+    filedata = filedata.replace("cnum4", cnum4)
+    filedata = filedata.replace("cname4", cname4)
+    filedata = filedata.replace("cslot4", cslot4)
+    filedata = filedata.replace("cgrade4", cgrade4)
+    filedata = filedata.replace("cinstr4", cinstr4)
 
   
     text_file = open("latexfiles/newreexam.tex", "w")
